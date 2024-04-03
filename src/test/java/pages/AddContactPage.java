@@ -1,10 +1,15 @@
 package pages;
 
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.Driver;
+
+import java.time.Duration;
 
 public class AddContactPage{
 
@@ -36,6 +41,8 @@ public class AddContactPage{
     private WebElement cancel;
     @FindBy(id = "logout")
     private WebElement logoutButton;
+    @FindBy (id = "error")
+    private WebElement errorMessage;
     public AddContactPage() {
         PageFactory.initElements(Driver.getDriver(),this);
     }
@@ -81,6 +88,11 @@ public class AddContactPage{
     }
     public void clickLogoutButton() {
         logoutButton.click();
+    }
+    public String getErrorMessage(){
+        WebDriverWait wait =new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOf(errorMessage));
+        return errorMessage.getText();
     }
 
 }

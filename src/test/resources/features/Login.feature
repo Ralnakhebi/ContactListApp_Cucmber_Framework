@@ -1,7 +1,7 @@
 Feature: I will try to login with different Scenarios
   Background: I will be on the desired page
     Given I am on the login page
-
+  @login
   Scenario: login with valid credentials
     When I fill in "Email" with "Reemah@sda.test.com"
     And I fill in "Password" with "test123pass"
@@ -9,7 +9,7 @@ Feature: I will try to login with different Scenarios
     Then I should be on the users home page
     And I should see "Contact List"
     And I close the page
-
+  @login
   Scenario Outline: login with Invalid credentials
     When I fill in "Email" with "<email@example>"
     And I fill in "Password" with "<password>"
