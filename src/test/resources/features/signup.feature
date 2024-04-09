@@ -1,24 +1,26 @@
 Feature: I will try to login with different Scenarios
   Background: I will be on the desired page
-    Given I am on the login page
+    Given I am on the signup page
   @signup
   Scenario: signup with valid credentials
-    When I fill in "Email" with "Reemah@sda.test.com"
-    And I fill in "Password" with "test123pass"
-    And I press Login Button
+    When I fill in "First Name" as "Reemah"
+    And I fill in "Last Name" as "Alnakhebi"
+    And I fill in "Email" as "example@test.sda"
+    And I fill in "Password" as "test1pass"
+    And I press signup Button
     Then I should be on the users home page
-    And I should see "Contact List"
+    And I should Login with the valid credentials
     And I close the page
   @signup
   Scenario Outline: signup with Invalid credentials
-    When I fill in "Email" with "<email@example>"
-    And I fill in "Password" with "<password>"
-    And I press Login Button
-    Then I should see an error message
+    When I fill in "<First Name>"
+    And I fill in "<Last Name>"
+    And I fill in "<Email>"
+    And I fill in "<Pass>"
+    And I press signup Button
+    Then I should see an specific error message
     And I close the page
-
     Examples:
-      | email@example | password |
-      | rr@example    | 2135     |
-      | r2@example    | 623620   |
-      | r4@example    | 5435     |
+      | First Name | Last Name | Email | Pass |
+
+
